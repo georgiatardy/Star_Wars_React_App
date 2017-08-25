@@ -78,18 +78,16 @@ class App extends Component {
     Store vehicles state in a variable.
     Map over this variable to access the values needed to render.
     */
-    let vehicleArray = this.state.vehicles;
+let vehicleArray = this.state.vehicles;
     let vehicles = vehicleArray.map((vehicles) => {
       return (
-        < div key = {vehicles.name} className = "col-md-4" >
-  <div className="card">
-    <div className="card-block">
-      <h4 className="card-title">Vehicle: {vehicles.name}</h4>
-      <h5 className="card-subtitle mb-2 text-muted">Model: {vehicles.model}</h5>
-      <div className="card">
+        <div className = "col-md-4"  key = {vehicles.name}>
+        <div className="card">
         <div className="card-block">
+        <h4 className="card-title">Vehicle: {vehicles.name}</h4>
+        <h5 className="card-subtitle mb-2 text-muted">Model: {vehicles.model}</h5>
           <h5 className="card-subtitle mb-2 text-muted">Specs</h5>
-          <ul className="list-group list-group-flush">
+          <ul className="list-group list-group-flush card-block">
             <li className="list-group-item">Manufacturer: {vehicles.manufacturer}</li>
             <li className="list-group-item">Class: {vehicles.vehicle_class}</li>
             <li className="list-group-item">Passengers: {vehicles.passengers}</li>
@@ -101,21 +99,42 @@ class App extends Component {
         </div>
       </div>
     </div>
-  </div>
-< /div>
-)
-  })
-return ( <
-  div className = "App" > {
-    /*
-            The App component needs the following:
-             jumbotron section, form section, vehicle cards section.
-             Your form will also need a header in which you will pass the state of the form upon submit.
-             */
-  } <
-  /div>
 );
-}
-}
+  })
+return (
+  <div className = "App" >
+  {/*
+      The App component needs the following:
+      jumbotron section, form section, vehicle cards section.
+      Your form will also need a header in which you will pass
+      the state of the form upon submit.
+      */
+        }
+        <main className="row">
+                  <section className="col-md-10 offset-md-1">
+                    <div className="jumbotron">
+                      <h1 className="display-3">Star Wars</h1 > <hr className="my-4"/> < p className = "lead" > The Vehicles of Star Wars < /p>
+                    </div >
+                    <div className="card form">
+                      <div className="card-block">
+                        <h2 className="card-title">What is your name, pilot?</h2>
+                        <form onSubmit={this.handleSubmit}>
+                          <div className="form-group">
+                            <input className="form-control col-md-4 offset-md-4" id="pilotName" onChange={this.handleNameChange} name="name" type="text" value={this.state.value} placeholder="Enter your name"/>
+                          </div>
+                          <button type="submit" className="btn btn-primary">Submit</button>
+                        </form>
+                        <h1>{this.state.pilot}</h1>
+                        </div>
+                      </div>
+                   < div className = "row" >
+                 {vehicles}
+              < /div>
+          </section >
+        </main>
+     </div>
+       );
+     }
+   }
 
 export default App;
